@@ -119,7 +119,7 @@ public class App {
                         // Se crea intencionalmente para provocar la excepción.
                         new ProductoOficina(
                                         "OF-999",
-                                        "Cinta Pegante",
+                                        "Cinta Pegante.",
                                         -1500.0,
                                         10,
                                         "Papelería");
