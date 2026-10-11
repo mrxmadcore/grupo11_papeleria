@@ -8,7 +8,6 @@ public class Pedido {
     private String estado;
     private Proveedor proveedor;
 
-    // Constructor que está pidiendo App.java
     public Pedido(LocalDate fecha, String estado, Proveedor proveedor) {
 
         if (fecha == null) {
