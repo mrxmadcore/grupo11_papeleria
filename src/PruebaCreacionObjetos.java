@@ -50,7 +50,7 @@ public class PruebaCreacionObjetos {
 
         System.out.println(
                 "Cantidad de items en la venta: "
-                + venta.getItems().size()
+                + venta.getItems().getTamano()
         );
     }
 }
