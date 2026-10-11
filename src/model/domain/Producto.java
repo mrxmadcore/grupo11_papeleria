@@ -1,6 +1,8 @@
 package model.domain;
 
+import model.structures.ListaSimple;
 public abstract class Producto implements Vendible {
+    private ListaSimple<Pedido> pedidos = new ListaSimple<>();
 
     private String codigo;
     private String nombre;

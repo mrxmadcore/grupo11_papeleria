@@ -1,6 +1,8 @@
 package model.domain;
 
+import model.structures.ListaSimple;
 public class Proveedor {
+    private ListaSimple<Pedido> pedidos = new ListaSimple<>();
 
     private String nombre;
     private String telefono;

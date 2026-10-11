@@ -2,8 +2,10 @@ package model.domain;
 
 import java.time.LocalDate;
 
-public class Pedido {
+import model.structures.ListaSimple;
 
+public class Pedido {
+    private ListaSimple<Pedido> pedidos = new ListaSimple<>();
     private LocalDate fecha;
     private String estado;
     private Proveedor proveedor;
