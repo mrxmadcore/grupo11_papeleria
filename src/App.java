@@ -107,7 +107,7 @@ public class App {
 
                         cuadernoPrimaria.vender(100);
 
-                } catch (IllegalStateException e) {
+                } catch (IllegalArgumentException e) {
                         System.out.println(
                                         "-> Excepción capturada (Stock insuficiente): "
                                                         + e.getMessage());
@@ -133,6 +133,7 @@ public class App {
                 System.out.println(
                                 "     PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO     \n");
 
+                // Inicia el menú
                 System.out.println("Iniciando menú interactivo de listas...");
                 MenuListasView menuVista = new MenuListasView();
                 menuVista.mostrarMenu();

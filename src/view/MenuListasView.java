@@ -1,4 +1,5 @@
 package view;
+
 import java.util.Scanner;
 import model.structures.ListaSimple;
 
@@ -11,7 +12,7 @@ public class MenuListasView {
 
         do {
             System.out.println("\n=================================");
-            System.out.println("      MENÚ - LISTA SIMPLE        ");
+            System.out.println("      MENÚ - LISTA        ");
             System.out.println("=================================");
             System.out.println("1. Agregar elemento");
             System.out.println("2. Buscar elemento");
@@ -36,7 +37,7 @@ public class MenuListasView {
                         System.out.print("Ingrese el valor que desea buscar: ");
                         String datoBuscar = scanner.nextLine();
                         String encontrado = lista.buscarPorValor(datoBuscar);
-                        
+
                         if (encontrado != null) {
                             System.out.println(">> ¡Encontrado! El elemento '" + encontrado + "' sí está en la lista.");
                         } else {
@@ -57,7 +58,7 @@ public class MenuListasView {
                         System.out.print("Ingrese el valor que desea eliminar: ");
                         String datoEliminar = scanner.nextLine();
                         boolean eliminado = lista.eliminar(datoEliminar);
-                        
+
                         if (eliminado) {
                             System.out.println(">> ¡Elemento eliminado correctamente!");
                         } else {
@@ -78,6 +79,6 @@ public class MenuListasView {
             }
 
         } while (opcion != 5);
-        
+
     }
 }
