@@ -133,7 +133,6 @@ public class App {
                 System.out.println(
                                 "     PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO     \n");
 
-                // INICIAR EL MENÚ EN CONSOLA 
                 System.out.println("Iniciando menú interactivo de listas...");
                 MenuListasView menuVista = new MenuListasView();
                 menuVista.mostrarMenu();
