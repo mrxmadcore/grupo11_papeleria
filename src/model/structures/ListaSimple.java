@@ -18,7 +18,6 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         return tamano;
     }
 
-
     public Nodo<T> getHead() {
         return head;
     }

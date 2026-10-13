@@ -1,9 +1,10 @@
 import model.domain.*;
+import view.MenuListasView;
 import java.time.LocalDate;
 
 public class App {
         public static void main(String[] args) {
-                System.out.println("-----PAPELERÍA-----");
+                System.out.println("-----PAPELERÍA - PRUEBAS DE DOMINIO-----");
 
                 ProductoOficina resma = new ProductoOficina(
                                 "OF-101",
@@ -116,7 +117,6 @@ public class App {
                         System.out.println(
                                         "Intentando crear un producto con precio negativo (-1500)...");
 
-                        // Se crea intencionalmente para provocar la excepción.
                         new ProductoOficina(
                                         "OF-999",
                                         "Cinta Pegante.",
@@ -131,6 +131,11 @@ public class App {
                 }
 
                 System.out.println(
-                                "      TODAS LAS PRUEBAS EJECUTADAS CON ÉXITO     ");
+                                "     PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO     \n");
+
+                // INICIAR EL MENÚ EN CONSOLA 
+                System.out.println("Iniciando menú interactivo de listas...");
+                MenuListasView menuVista = new MenuListasView();
+                menuVista.mostrarMenu();
         }
 }
