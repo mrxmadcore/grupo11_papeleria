@@ -12,7 +12,7 @@ public class MenuListasView {
 
         do {
             System.out.println("\n=================================");
-            System.out.println("      MENÚ - LISTA        ");
+            System.out.println("      MENÚ - PAPELERÍA     ");
             System.out.println("=================================");
             System.out.println("1. Agregar elemento");
             System.out.println("2. Buscar elemento");
@@ -67,7 +67,7 @@ public class MenuListasView {
                         break;
 
                     case 5:
-                        System.out.println("Saliendo del menú de listas...");
+                        System.out.println("Saliendo del Sistema de Papelería...");
                         break;
 
                     default:
