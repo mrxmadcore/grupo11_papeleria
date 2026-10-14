@@ -55,7 +55,7 @@ public class MenuListasView {
                         break;
 
                     case 4:
-                        System.out.print("Ingrese el valor que desea eliminar: ");
+                        System.out.print("Ingrese el valor y/o el elemento que desea eliminar: ");
                         String datoEliminar = scanner.nextLine();
                         boolean eliminado = lista.eliminar(datoEliminar);
 

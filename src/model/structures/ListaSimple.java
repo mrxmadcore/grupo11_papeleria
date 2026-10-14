@@ -2,7 +2,7 @@ package model.structures;
 
 public class ListaSimple<T> implements OperacionesEstructuras<T> {
 
-    private Nodo<T> head;
+    public Nodo<T> head;
     private int tamano;
 
     public ListaSimple() {
@@ -18,13 +18,16 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         return tamano;
     }
 
+    public int size() {
+        return tamano;
+    }
+
     public Nodo<T> getHead() {
         return head;
     }
 
     public void listar() {
         Nodo<T> actual = head;
-
         while (actual != null) {
             System.out.println(actual.getDato());
             actual = actual.getSiguiente();
@@ -32,35 +35,39 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
     }
 
     public void insertarInicio(T dato) {
+        if (dato == null) {
+            throw new IllegalArgumentException("No se pueden insertar elementos nulos en la lista.");
+        }
         Nodo<T> nuevo = new Nodo<>(dato);
-
         nuevo.setSiguiente(head);
         head = nuevo;
         tamano++;
     }
 
     public void insertarFinal(T dato) {
+        if (dato == null) {
+            throw new IllegalArgumentException("No se pueden insertar elementos nulos en la lista.");
+        }
         Nodo<T> nuevo = new Nodo<>(dato);
 
         if (estaVacia()) {
             head = nuevo;
         } else {
             Nodo<T> actual = head;
-
             while (actual.getSiguiente() != null) {
                 actual = actual.getSiguiente();
             }
-
             actual.setSiguiente(nuevo);
         }
-
         tamano++;
     }
 
     public void insertarEnPosicion(int indice, T dato) {
+        if (dato == null) {
+            throw new IllegalArgumentException("No se pueden insertar elementos nulos en la lista.");
+        }
         if (indice < 0 || indice > tamano) {
-            throw new IndexOutOfBoundsException(
-                    "Indice fuera de rango: " + indice);
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
         }
 
         if (indice == 0) {
@@ -74,16 +81,13 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         }
 
         Nodo<T> anterior = head;
-
         for (int i = 0; i < indice - 1; i++) {
             anterior = anterior.getSiguiente();
         }
 
         Nodo<T> nuevo = new Nodo<>(dato);
-
         nuevo.setSiguiente(anterior.getSiguiente());
         anterior.setSiguiente(nuevo);
-
         tamano++;
     }
 
@@ -95,12 +99,10 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
     @Override
     public T buscarPorIndice(int indice) {
         if (indice < 0 || indice >= tamano) {
-            throw new IndexOutOfBoundsException(
-                    "Indice fuera de rango: " + indice);
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
         }
 
         Nodo<T> actual = head;
-
         for (int i = 0; i < indice; i++) {
             actual = actual.getSiguiente();
         }
@@ -110,13 +112,15 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
 
     @Override
     public T buscarPorValor(T dato) {
-        Nodo<T> actual = head;
+        if (dato == null) {
+            return null;
+        }
 
+        Nodo<T> actual = head;
         while (actual != null) {
-            if (actual.getDato().equals(dato)) {
+            if (actual.getDato() != null && actual.getDato().equals(dato)) {
                 return actual.getDato();
             }
-
             actual = actual.getSiguiente();
         }
 
@@ -125,13 +129,14 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
 
     @Override
     public void actualizar(int indice, T dato) {
+        if (dato == null) {
+            throw new IllegalArgumentException("El nuevo dato no puede ser nulo.");
+        }
         if (indice < 0 || indice >= tamano) {
-            throw new IndexOutOfBoundsException(
-                    "Indice fuera de rango: " + indice);
+            throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
         }
 
         Nodo<T> actual = head;
-
         for (int i = 0; i < indice; i++) {
             actual = actual.getSiguiente();
         }
@@ -146,7 +151,6 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
 
         head = head.getSiguiente();
         tamano--;
-
         return true;
     }
 
@@ -155,36 +159,30 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
             return false;
         }
 
-        // Solo hay un elemento
         if (head.getSiguiente() == null) {
             head = null;
             tamano--;
-
             return true;
         }
 
         Nodo<T> actual = head;
-
         while (actual.getSiguiente().getSiguiente() != null) {
             actual = actual.getSiguiente();
         }
 
         actual.setSiguiente(null);
         tamano--;
-
         return true;
     }
 
     public boolean eliminarPorValor(T dato) {
-        if (estaVacia()) {
+        if (estaVacia() || dato == null) {
             return false;
         }
 
-        // El elemento está en el primer nodo
-        if (head.getDato().equals(dato)) {
+        if (head.getDato() != null && head.getDato().equals(dato)) {
             head = head.getSiguiente();
             tamano--;
-
             return true;
         }
 
@@ -192,14 +190,11 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         Nodo<T> actual = head.getSiguiente();
 
         while (actual != null) {
-
-            if (actual.getDato().equals(dato)) {
+            if (actual.getDato() != null && actual.getDato().equals(dato)) {
                 anterior.setSiguiente(actual.getSiguiente());
                 tamano--;
-
                 return true;
             }
-
             anterior = actual;
             actual = actual.getSiguiente();
         }
