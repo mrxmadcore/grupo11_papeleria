@@ -1,6 +1,8 @@
 package model.domain;
 
+import model.structures.ListaSimple;
 public class Proveedor {
+    private ListaSimple<Pedido> pedidos = new ListaSimple<>();
 
     private String nombre;
     private String telefono;
@@ -50,5 +52,9 @@ public class Proveedor {
 
     public void setCategoriaProductos(String categoriaProductos) {
         this.categoriaProductos = categoriaProductos;
+    }
+
+    public void insertarFinal(Proveedor proveedor) {
+        throw new UnsupportedOperationException("Unimplemented method 'insertarFinal'");
     }
 }

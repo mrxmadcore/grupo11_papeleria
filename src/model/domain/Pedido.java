@@ -2,13 +2,13 @@ package model.domain;
 
 import java.time.LocalDate;
 
-public class Pedido {
+import model.structures.ListaSimple;
 
+public class Pedido {
     private LocalDate fecha;
     private String estado;
     private Proveedor proveedor;
 
-    // Constructor que está pidiendo App.java
     public Pedido(LocalDate fecha, String estado, Proveedor proveedor) {
 
         if (fecha == null) {
