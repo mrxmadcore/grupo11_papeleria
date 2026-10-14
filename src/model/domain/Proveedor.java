@@ -1,6 +1,7 @@
 package model.domain;
 
 import model.structures.ListaSimple;
+
 public class Proveedor {
     private ListaSimple<Pedido> pedidos = new ListaSimple<>();
 
@@ -52,6 +53,14 @@ public class Proveedor {
 
     public void setCategoriaProductos(String categoriaProductos) {
         this.categoriaProductos = categoriaProductos;
+    }
+
+    public ListaSimple<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(ListaSimple<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     public void insertarFinal(Proveedor proveedor) {
