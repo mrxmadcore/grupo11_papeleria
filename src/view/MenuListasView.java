@@ -79,6 +79,7 @@ public class MenuListasView {
             }
 
         } while (opcion != 5);
+        scanner.close();
 
     }
 }
