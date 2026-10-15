@@ -35,7 +35,7 @@ public class ProveedorService {
 
     public void recorrerLista() {
         Nodo<Proveedor> actual = proveedores.getHead();
-        for (int i = 0; i < proveedores.getTamano(); i++) {
+        for (int i = 0; i < proveedores.size(); i++) {
             Proveedor proveedorActual = actual.getDato();
             System.out.println("Indice: " + i + " Proveedor: " +
                     proveedorActual.getNombre());

@@ -46,7 +46,7 @@ public class MenuListasView {
                         break;
 
                     case 3:
-                        System.out.println("\n--- ELEMENTOS DE LA LISTA (Total: " + lista.getTamano() + ") ---");
+                        System.out.println("\n--- ELEMENTOS DE LA LISTA (Total: " + lista.size() + ") ---");
                         if (lista.estaVacia()) {
                             System.out.println("La lista está vacía actualmente.");
                         } else {

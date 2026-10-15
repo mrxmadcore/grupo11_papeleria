@@ -14,10 +14,6 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         return head == null;
     }
 
-    public int getTamano() {
-        return tamano;
-    }
-
     public int size() {
         return tamano;
     }
