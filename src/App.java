@@ -63,7 +63,7 @@ public class App {
                 venta.agregarItem(item2);
 
                 System.out.println("Venta creada exitosamente con "
-                                + venta.getItems().getTamano()
+                                + venta.getItems().size()
                                 + " ítems distintos.");
 
                 System.out.println("\n--- 4. RELACIÓN PROVEEDOR Y PEDIDOS (1 a 0..*) ---");
