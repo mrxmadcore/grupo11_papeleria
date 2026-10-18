@@ -4,43 +4,36 @@ public class Pila<T> {
     private Nodo<T> cima;
     private int tamano;
 
-    private static class Nodo<T> {
-        T dato;
-        Nodo<T> siguiente;
-
-        public Nodo(T dato) {
-            this.dato = dato;
-            this.siguiente = null;
-        }
-    }
-
     public Pila() {
         this.cima = null;
         this.tamano = 0;
     }
 
     public void push(T dato) {
+        if (dato == null) {
+            throw new IllegalArgumentException("No se puede apilar un elemento nulo.");
+        }
         Nodo<T> nuevo = new Nodo<>(dato);
-        nuevo.siguiente = cima;
+        nuevo.setSiguiente(cima);
         cima = nuevo;
         tamano++;
     }
 
     public T pop() {
         if (isEmpty()) {
-            return null;
+            throw new IllegalStateException("La pila está vacía, no se puede hacer pop.");
         }
-        T dato = cima.dato;
-        cima = cima.siguiente;
+        T dato = cima.getDato();
+        cima = cima.getSiguiente();
         tamano--;
         return dato;
     }
 
     public T peek() {
         if (isEmpty()) {
-            return null;
+            throw new IllegalStateException("La pila está vacía, no se puede hacer peek.");
         }
-        return cima.dato;
+        return cima.getDato();
     }
 
     public boolean isEmpty() {
