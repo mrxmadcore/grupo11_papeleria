@@ -10,27 +10,33 @@ public class PedidosPendientes {
     }
 
     public void registrarPedido(Pedido pedido) {
+        if (pedido == null) {
+            throw new IllegalArgumentException("El pedido no puede ser nulo.");
+        }
         colaPedidos.enqueue(pedido);
         System.out.println("Pedido registrado en la cola correctamente.");
     }
 
     public Pedido procesarSiguientePedido() {
-        if (colaPedidos.estaVacia()) {
+        if (colaPedidos.isEmpty()) {
             System.out.println("No hay pedidos pendientes en la cola.");
             return null;
         }
         Pedido pedidoProcesado = colaPedidos.dequeue();
-        System.out.println("Procesando el pedido más antiguo con código/fecha para el proveedor: " 
-                           + pedidoProcesado.getProveedor().getNombre());
+        System.out.println("Procesando el pedido más antiguo para el proveedor: "
+                + pedidoProcesado.getProveedor().getNombre());
         return pedidoProcesado;
     }
 
     public Pedido verSiguientePedido() {
+        if (colaPedidos.isEmpty()) {
+            return null;
+        }
         return colaPedidos.peek();
     }
 
     public boolean hayPedidosPendientes() {
-        return !colaPedidos.estaVacia();
+        return !colaPedidos.isEmpty();
     }
 
     public int totalPedidosPendientes() {

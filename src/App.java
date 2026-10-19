@@ -1,10 +1,14 @@
 import model.domain.*;
+import service.VentaService;
 import view.MenuListasView;
+import view.MenuPilaView;
 import java.time.LocalDate;
 
 public class App {
         public static void main(String[] args) {
                 System.out.println("-----PAPELERÍA - PRUEBAS DE DOMINIO-----");
+
+                VentaService ventaService = new VentaService();
 
                 ProductoOficina resma = new ProductoOficina(
                                 "OF-101",
@@ -131,11 +135,14 @@ public class App {
                 }
 
                 System.out.println(
-                                "     PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO     \n");
+                                "    PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO    \n");
 
-                // Inicia el menú
                 System.out.println("Iniciando menú interactivo de listas...");
-                MenuListasView menuVista = new MenuListasView();
-                menuVista.mostrarMenu();
+                MenuListasView menuListaVista = new MenuListasView();
+                menuListaVista.mostrarMenu();
+
+                System.out.println("\nIniciando menú interactivo de Pila (Ventas)...");
+                MenuPilaView menuVentaVista = new MenuPilaView(ventaService);
+                menuVentaVista.iniciar();
         }
 }

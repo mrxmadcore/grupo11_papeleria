@@ -1,18 +1,18 @@
 package model.structures;
 
 public class Cola<T> {
-    private Nodo<T> frente;
+    private Nodo<T> front;
     private Nodo<T> fin;
     private int tamano;
 
     public Cola() {
-        this.frente = null;
+        this.front = null;
         this.fin = null;
         this.tamano = 0;
     }
 
-    public boolean estaVacia() {
-        return frente == null;
+    public boolean isEmpty() {
+        return front == null;
     }
 
     public int size() {
@@ -24,8 +24,8 @@ public class Cola<T> {
             throw new IllegalArgumentException("No se pueden encolar elementos nulos.");
         }
         Nodo<T> nuevo = new Nodo<>(dato);
-        if (estaVacia()) {
-            frente = nuevo;
+        if (isEmpty()) {
+            front = nuevo;
         } else {
             fin.setSiguiente(nuevo);
         }
@@ -34,12 +34,12 @@ public class Cola<T> {
     }
 
     public T dequeue() {
-        if (estaVacia()) {
+        if (isEmpty()) {
             return null;
         }
-        T dato = frente.getDato();
-        frente = frente.getSiguiente();
-        if (frente == null) {
+        T dato = front.getDato();
+        front = front.getSiguiente();
+        if (front == null) {
             fin = null;
         }
         tamano--;
@@ -47,10 +47,9 @@ public class Cola<T> {
     }
 
     public T peek() {
-        if (estaVacia()) {
+        if (isEmpty()) {
             return null;
         }
-        return frente.getDato();
+        return front.getDato();
     }
 }
-
