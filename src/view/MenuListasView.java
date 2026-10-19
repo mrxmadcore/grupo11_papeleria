@@ -23,7 +23,7 @@ public class MenuListasView {
 
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
-                scanner.nextLine(); // Limpiar el buffer del salto de línea
+                scanner.nextLine();
 
                 switch (opcion) {
                     case 1:
@@ -79,7 +79,6 @@ public class MenuListasView {
             }
 
         } while (opcion != 5);
-        scanner.close();
 
     }
 }

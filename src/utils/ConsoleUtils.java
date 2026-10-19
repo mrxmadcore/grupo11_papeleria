@@ -26,9 +26,4 @@ public class ConsoleUtils {
         scanner.nextLine();
         return valor;
     }
-
-    public static void cerrar() {
-        scanner.close();
-    }
 }
-

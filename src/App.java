@@ -1,7 +1,9 @@
 import model.domain.*;
 import service.VentaService;
+import service.PedidoService;
 import view.MenuListasView;
 import view.MenuPilaView;
+import view.MenuColaView;
 import java.time.LocalDate;
 
 public class App {
@@ -9,6 +11,7 @@ public class App {
                 System.out.println("-----PAPELERÍA - PRUEBAS DE DOMINIO-----");
 
                 VentaService ventaService = new VentaService();
+                PedidoService pedidoService = new PedidoService(); // Servicio para las colas
 
                 ProductoOficina resma = new ProductoOficina(
                                 "OF-101",
@@ -144,5 +147,9 @@ public class App {
                 System.out.println("\nIniciando menú interactivo de Pila (Ventas)...");
                 MenuPilaView menuVentaVista = new MenuPilaView(ventaService);
                 menuVentaVista.iniciar();
+
+                System.out.println("\nIniciando menú interactivo de Cola (Pedidos Pendientes)...");
+                MenuColaView menuColaVista = new MenuColaView(pedidoService);
+                menuColaVista.iniciar();
         }
 }
