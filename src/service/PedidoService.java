@@ -43,7 +43,7 @@ public class PedidoService {
 
     public void listarPedidosProveedor(Proveedor proveedor) {
         ListaSimple<Pedido> pedidos = (ListaSimple<Pedido>) proveedor.getPedidos();
-        if (pedidos.estaVacia()) {
+        if (pedidos.isEmpty()) {
             System.out.println("El proveedor no tiene pedidos registrados.");
             return;
         }

@@ -10,7 +10,7 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         this.tamano = 0;
     }
 
-    public boolean estaVacia() {
+    public boolean isEmpty() {
         return head == null;
     }
 
@@ -46,7 +46,7 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
         }
         Nodo<T> nuevo = new Nodo<>(dato);
 
-        if (estaVacia()) {
+        if (isEmpty()) {
             head = nuevo;
         } else {
             Nodo<T> actual = head;
@@ -141,7 +141,7 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
     }
 
     public boolean eliminarAlInicio() {
-        if (estaVacia()) {
+        if (isEmpty()) {
             return false;
         }
 
@@ -151,7 +151,7 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
     }
 
     public boolean eliminarAlFinal() {
-        if (estaVacia()) {
+        if (isEmpty()) {
             return false;
         }
 
@@ -172,7 +172,7 @@ public class ListaSimple<T> implements OperacionesEstructuras<T> {
     }
 
     public boolean eliminarPorValor(T dato) {
-        if (estaVacia() || dato == null) {
+        if (isEmpty() || dato == null) {
             return false;
         }
 

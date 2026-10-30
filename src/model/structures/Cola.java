@@ -46,7 +46,7 @@ public class Cola<T> {
         return dato;
     }
 
-    public T peek() {
+    public T front() {
         if (isEmpty()) {
             return null;
         }

@@ -32,7 +32,7 @@ public class PedidosPendientes {
         if (colaPedidos.isEmpty()) {
             return null;
         }
-        return colaPedidos.peek();
+        return colaPedidos.front();
     }
 
     public boolean hayPedidosPendientes() {
