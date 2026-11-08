@@ -63,15 +63,12 @@ public class VentaService {
         StringBuilder sb = new StringBuilder();
         int contador = 1;
 
-        // Retirar de la original, agregar al texto y pasar a la auxiliar (queda en
-        // orden inverso)
         while (!historialVentas.isEmpty()) {
             Venta venta = historialVentas.pop();
             sb.append(contador++).append(". ").append(venta.toString()).append("\n");
             auxiliar.push(venta);
         }
 
-        // Devolver los elementos de la auxiliar a la original para restaurarla intacta
         while (!auxiliar.isEmpty()) {
             historialVentas.push(auxiliar.pop());
         }
