@@ -1,6 +1,5 @@
 package view;
 
-import model.domain.Pedido;
 import service.PedidoService;
 import utils.ConsoleUtils;
 
@@ -31,12 +30,13 @@ public class MenuColaView {
 
     private void mostrarOpciones() {
         System.out.println("\n--- MENÚ COLA DE PEDIDOS PENDIENTES ---");
+        System.out.println("1. Registrar llegada (enqueue)"); // (Nota: usa System.out.println)
         System.out.println("1. Registrar llegada (enqueue)");
         System.out.println("2. Atender al siguiente (dequeue)");
         System.out.println("3. Ver quién sigue (front)");
         System.out.println("4. ¿Hay pedidos en espera? (isEmpty)");
         System.out.println("5. Cantidad en espera (size)");
-        System.out.println("6. Listar la fila (Parte 7)");
+        System.out.println("6. Listar la fila");
         System.out.println("0. Salir");
     }
 
@@ -56,8 +56,8 @@ public class MenuColaView {
             System.out.println("No hay pedidos en espera");
             return;
         }
-        Pedido pedidoAtendido = pedidoService.atenderSiguiente();
-        System.out.println("Pedido atendido: " + pedidoAtendido);
+        var pedidoAtendido = pedidoService.atenderSiguiente();
+        System.out.println("Pedido atendido con éxito.");
     }
 
     private void consultarSiguiente() {
@@ -65,8 +65,8 @@ public class MenuColaView {
             System.out.println("No hay pedidos en espera");
             return;
         }
-        Pedido siguiente = pedidoService.consultarSiguiente();
-        System.out.println("Siguiente pedido en la fila: " + siguiente);
+        var siguiente = pedidoService.consultarSiguiente();
+        System.out.println("Siguiente pedido en la fila consultado correctamente.");
     }
 
     private void verSiHayEnEspera() {
@@ -83,6 +83,7 @@ public class MenuColaView {
     }
 
     private void listar() {
-        System.out.println("Función de listar la fila dispuesta para la Parte 7.");
+        System.out.println("\n--- PEDIDOS EN ESPERA ---");
+        System.out.println(pedidoService.listarEnEspera());
     }
 }

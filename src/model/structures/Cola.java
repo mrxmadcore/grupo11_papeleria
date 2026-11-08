@@ -1,5 +1,7 @@
 package model.structures;
 
+import java.util.NoSuchElementException;
+
 public class Cola<T> {
     private Nodo<T> front;
     private Nodo<T> fin;
@@ -35,7 +37,7 @@ public class Cola<T> {
 
     public T dequeue() {
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException("La cola está vacía");
         }
         T dato = front.getDato();
         front = front.getSiguiente();
@@ -48,7 +50,7 @@ public class Cola<T> {
 
     public T front() {
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException("La cola está vacía");
         }
         return front.getDato();
     }
