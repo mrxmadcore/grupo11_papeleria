@@ -10,9 +10,7 @@ public class VentaService {
     private Pila<Venta> historialVentas = new Pila<>();
 
     public void registrarVenta(Venta nuevaVenta) {
-        if (nuevaVenta != null) {
-            historialVentas.push(nuevaVenta);
-        }
+        historialVentas.push(nuevaVenta);
     }
 
     public Venta anularUltimaVenta() {
@@ -41,7 +39,7 @@ public class VentaService {
 
     public Venta consultarUltimaVenta() {
         if (historialVentas.isEmpty()) {
-            throw new IllegalStateException("No hay ventas registradas.");
+            throw new IllegalStateException("La pila está vacía");
         }
         return historialVentas.peek();
     }
@@ -56,7 +54,7 @@ public class VentaService {
 
     public String listarOperaciones() {
         if (historialVentas.isEmpty()) {
-            return "No hay ventas registradas para listar.";
+            return "No hay operaciones por deshacer";
         }
 
         Pila<Venta> auxiliar = new Pila<>();

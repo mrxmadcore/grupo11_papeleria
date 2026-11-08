@@ -55,7 +55,7 @@ public class MenuPilaView {
         }
 
         Venta ventaAnulada = ventaService.anularUltimaVenta();
-        System.out.println("Se anuló la venta: " + ventaAnulada + " y se restauró el stock.");
+        System.out.println("Se ha anulado la última venta y se ha restaurado el stock exitosamente.");
     }
 
     private void consultarUltima() {
@@ -82,6 +82,7 @@ public class MenuPilaView {
     }
 
     private void listar() {
-        System.out.println("Función de listar dispuesta para más adelante en el proyecto.");
+        String resultado = ventaService.listarOperaciones();
+        System.out.println(resultado);
     }
 }
