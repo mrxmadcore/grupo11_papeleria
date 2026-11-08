@@ -10,20 +10,14 @@ public class VentaService {
     private Pila<Venta> historialVentas = new Pila<>();
 
     public void registrarVenta(Venta nuevaVenta) {
-        historialVentas.push(nuevaVenta);
+        if (nuevaVenta != null) {
+            historialVentas.push(nuevaVenta);
+        }
     }
 
     public Venta anularUltimaVenta() {
-        if (historialVentas.isEmpty()) {
-            System.out.println("No hay ventas registradas para anular.");
-            return null;
-        }
-
         Venta ventaAnulada = historialVentas.pop();
-
         restaurarStock(ventaAnulada);
-
-        System.out.println("Se ha anulado la última venta y se ha restaurado el stock exitosamente.");
         return ventaAnulada;
     }
 
@@ -47,7 +41,7 @@ public class VentaService {
 
     public Venta consultarUltimaVenta() {
         if (historialVentas.isEmpty()) {
-            return null;
+            throw new IllegalStateException("No hay ventas registradas.");
         }
         return historialVentas.peek();
     }
@@ -58,5 +52,30 @@ public class VentaService {
 
     public int totalVentasRealizadas() {
         return historialVentas.size();
+    }
+
+    public String listarOperaciones() {
+        if (historialVentas.isEmpty()) {
+            return "No hay ventas registradas para listar.";
+        }
+
+        Pila<Venta> auxiliar = new Pila<>();
+        StringBuilder sb = new StringBuilder();
+        int contador = 1;
+
+        // Retirar de la original, agregar al texto y pasar a la auxiliar (queda en
+        // orden inverso)
+        while (!historialVentas.isEmpty()) {
+            Venta venta = historialVentas.pop();
+            sb.append(contador++).append(". ").append(venta.toString()).append("\n");
+            auxiliar.push(venta);
+        }
+
+        // Devolver los elementos de la auxiliar a la original para restaurarla intacta
+        while (!auxiliar.isEmpty()) {
+            historialVentas.push(auxiliar.pop());
+        }
+
+        return sb.toString().trim();
     }
 }
