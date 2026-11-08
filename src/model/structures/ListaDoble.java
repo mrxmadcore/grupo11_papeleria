@@ -12,7 +12,7 @@ public class ListaDoble<T> {
     }
 
     public int size() {
-        return tamno;
+        return tamano;
     }
 
     public void add(T dato) {
