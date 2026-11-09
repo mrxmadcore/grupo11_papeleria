@@ -1,6 +1,11 @@
 import model.domain.*;
+<<<<<<< HEAD
 import service.VentaService;
 import service.PedidoService;
+=======
+import service.CatalogoService;
+import view.MenuCatalogoView;
+>>>>>>> development_laura
 import view.MenuListasView;
 import view.MenuPilaView;
 import view.MenuColaView;
@@ -141,6 +146,7 @@ public class App {
                                 "    PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO    \n");
 
                 System.out.println("Iniciando menú interactivo de listas...");
+<<<<<<< HEAD
                 MenuListasView menuListaVista = new MenuListasView();
                 menuListaVista.mostrarMenu();
 
@@ -151,5 +157,14 @@ public class App {
                 System.out.println("\nIniciando menú interactivo de Cola (Pedidos Pendientes)...");
                 MenuColaView menuColaVista = new MenuColaView(pedidoService);
                 menuColaVista.iniciar();
+=======
+                MenuListasView menuVista = new MenuListasView();
+                menuVista.mostrarMenu();
+
+                System.out.println("\nIniciando menú interactivo de Catálogo Navegable...");
+                CatalogoService catalogoService = new CatalogoService();
+                MenuCatalogoView menuCatalogoView = new MenuCatalogoView(catalogoService);
+                menuCatalogoView.iniciar();
+>>>>>>> development_laura
         }
 }
