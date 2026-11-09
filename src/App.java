@@ -1,4 +1,6 @@
 import model.domain.*;
+import service.CatalogoService;
+import view.MenuCatalogoView;
 import view.MenuListasView;
 import java.time.LocalDate;
 
@@ -133,9 +135,13 @@ public class App {
                 System.out.println(
                                 "     PRUEBAS DE DOMINIO EJECUTADAS CON ÉXITO     \n");
 
-                // Inicia el menú
                 System.out.println("Iniciando menú interactivo de listas...");
                 MenuListasView menuVista = new MenuListasView();
                 menuVista.mostrarMenu();
+
+                System.out.println("\nIniciando menú interactivo de Catálogo Navegable...");
+                CatalogoService catalogoService = new CatalogoService();
+                MenuCatalogoView menuCatalogoView = new MenuCatalogoView(catalogoService);
+                menuCatalogoView.iniciar();
         }
 }
