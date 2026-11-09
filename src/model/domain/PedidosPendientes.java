@@ -3,43 +3,26 @@ package model.domain;
 import model.structures.Cola;
 
 public class PedidosPendientes {
-    private Cola<Pedido> colaPedidos;
+    private String descripcion;
+    private Cola<Pedido> fila;
 
-    public PedidosPendientes() {
-        this.colaPedidos = new Cola<>();
-    }
-
-    public void registrarPedido(Pedido pedido) {
-        if (pedido == null) {
-            throw new IllegalArgumentException("El pedido no puede ser nulo.");
+    public PedidosPendientes(String descripcion) {
+        if (descripcion == null || descripcion.trim().isEmpty()) {
+            throw new IllegalArgumentException("La descripción no puede ser nula ni vacía.");
         }
-        colaPedidos.enqueue(pedido);
-        System.out.println("Pedido registrado en la cola correctamente.");
+        this.descripcion = descripcion;
+        this.fila = new Cola<>();
     }
 
-    public Pedido procesarSiguientePedido() {
-        if (colaPedidos.isEmpty()) {
-            System.out.println("No hay pedidos pendientes en la cola.");
-            return null;
-        }
-        Pedido pedidoProcesado = colaPedidos.dequeue();
-        System.out.println("Procesando el pedido más antiguo para el proveedor: "
-                + pedidoProcesado.getProveedor().getNombre());
-        return pedidoProcesado;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public Pedido verSiguientePedido() {
-        if (colaPedidos.isEmpty()) {
-            return null;
-        }
-        return colaPedidos.peek();
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public boolean hayPedidosPendientes() {
-        return !colaPedidos.isEmpty();
-    }
-
-    public int totalPedidosPendientes() {
-        return colaPedidos.size();
+    public Cola<Pedido> getFila() {
+        return fila;
     }
 }

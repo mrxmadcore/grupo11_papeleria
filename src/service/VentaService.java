@@ -14,16 +14,8 @@ public class VentaService {
     }
 
     public Venta anularUltimaVenta() {
-        if (historialVentas.isEmpty()) {
-            System.out.println("No hay ventas registradas para anular.");
-            return null;
-        }
-
         Venta ventaAnulada = historialVentas.pop();
-
         restaurarStock(ventaAnulada);
-
-        System.out.println("Se ha anulado la última venta y se ha restaurado el stock exitosamente.");
         return ventaAnulada;
     }
 
@@ -47,7 +39,7 @@ public class VentaService {
 
     public Venta consultarUltimaVenta() {
         if (historialVentas.isEmpty()) {
-            return null;
+            throw new IllegalStateException("La pila está vacía");
         }
         return historialVentas.peek();
     }
@@ -58,5 +50,27 @@ public class VentaService {
 
     public int totalVentasRealizadas() {
         return historialVentas.size();
+    }
+
+    public String listarOperaciones() {
+        if (historialVentas.isEmpty()) {
+            return "No hay operaciones por deshacer";
+        }
+
+        Pila<Venta> auxiliar = new Pila<>();
+        StringBuilder sb = new StringBuilder();
+        int contador = 1;
+
+        while (!historialVentas.isEmpty()) {
+            Venta venta = historialVentas.pop();
+            sb.append(contador++).append(". ").append(venta.toString()).append("\n");
+            auxiliar.push(venta);
+        }
+
+        while (!auxiliar.isEmpty()) {
+            historialVentas.push(auxiliar.pop());
+        }
+
+        return sb.toString().trim();
     }
 }
